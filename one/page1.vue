@@ -2,7 +2,7 @@
   <div class="page1">
       <!-- ///  出现这种情况是因为依赖路由的params参数获取写在created生命周期里面,
       因为路由懒加载的关系，退出页面再进入另一个文章页面并不会运行created组件生命周期,
-      导致文章数据还是第一次进入的1      /// -->
+      导致文章数据还是第一次进入的数据      /// -->
     <button @click="changeMessage">改变message</button>          
     <button @click="toPageTwo"></button> 
 
