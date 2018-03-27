@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>two</title>
+</head>
+<body>
+	
+	<div id="box">
+			<!-- 复选框来操作的小demo -->
+			<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+			  <label for="jack">Jack</label>
+			  <input type="checkbox" id="john" value="John" v-model="checkedNames">
+			  <label for="john">John</label>
+			  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+			  <label for="mike">Mike</label>
+			  <br>
+			  <span>Checked names: {{ checkedNames }}</span>
+
+			<ul>
+				<li v-for="item in arrList">{{item}}</li>      <!--  v-for循环数组或对象分别显示元素 -->
+			</ul>
+			<!-- 可以添加条件显示 对应元素 配合使用 -->
+			<ul>
+				<li v-for="item in arrList" v-text="item % 2 == 0?item:'不符合数据'"></li>      <!--  v-for循环数组或对象分别显示元素 -->  <!-- 能被2整出的数显示 -->
+			</ul>
+			
+			<ul>
+				<li v-for="item in arrList" v-if="item > 5 ? true : false">{{item}}</li>      <!--  v-for循环数组或对象分别显示元素 -->  <!--  大于5的数据显示 -->
+			</ul>
+
+	</div>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>	
+	<script>
+		
+
+
+		/// 反转
+		var str = "123456"; 
+		// console.log( str.split("").reverse().join("") )	   /// 654321
+
+		var obj ={
+			msg:1,
+			call:function(){
+				console.log(this.msg)
+			}
+		}
+		obj.call()
+
+		// ES6  Promise !!!!
+		// 什么是Promise?
+		// Promise，js异步编程的流行解决方案，相比于古老的回调函数等方式，它更科学，更优雅。
+		// 新建一个Promise对象                              resolve 英语翻译就是决定的意思
+															//这里代表成功的执行函数
+															//reject 拒绝的意思
+															//代表失败的执行函数
+		// Promise是有"状态"的，分别是pending（等待态）、fulfilled（成功态）、rejected（失败态），pending可以转换为fulfilled或rejected，但fulfilled和rejected不可相互转化
+		
+		let p = new Promise(function(resolve, reject){
+			// setTimeout(function(){
+		        let num = Math.random()
+		        if (num > 0.5) {
+		            resolve(num)
+		        }else{
+		            reject(num)
+		        }
+		    // }, 0)
+
+		})
+
+		p.then(function(data){ // resolve方法会将参数传进成功的回调
+		    console.log(data,'牛逼') 
+		}, function(err){      // reject方法会将失败的信息传进失败的回调
+		    console.log(err,'垃圾')
+		})
+
+
+
+
+		// ////////////////////////////////////          vue
+
+		new Vue({
+			el:'#box',
+			data: {
+			    checkedNames: [],
+			    arrList:[1,2,3,4,5,6]
+			 },
+			methods:{
+
+			}
+		})
+
+	</script>
+</body>
+</html>
